@@ -5,18 +5,18 @@ export class Series {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('varchar', { length: 250 })
+  @Column('varchar', { length: 250, nullable: false })
   titulo: string;
 
-  @Column('varchar', { length: 5000 })
+  @Column('varchar', { length: 5000, nullable: false })
   sinopsis: string;
 
-  @Column('varchar', { length: 100 })
+  @Column('varchar', { length: 100, nullable: false })
   director: string;
 
-  @Column('int')
+  @Column('int', { nullable: false })
   temporadas: number;
 
-  @CreateDateColumn({ name: 'fecha_estreno' })
+  @CreateDateColumn({ name: 'fecha_estreno', nullable: false })
   fechaEstreno: Date;
 }
