@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDateString, IsNotEmpty, IsNumber, IsString, MaxLength, MinLength, isNumber } from "class-validator";
 
-export class CreateSeriesDto {
+export class CreateSerieDto {
   @ApiProperty()
   @IsNotEmpty({ message: 'El campo titulo no debe ser vacío' })
   @IsString({ message: 'El campo titulo debe ser de tipo cadena' })
