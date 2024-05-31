@@ -1,26 +1,52 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateSerieDto } from './dto/create-serie.dto';
 import { UpdateSerieDto } from './dto/update-serie.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Serie } from './entities/serie.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class SeriesService {
-  create(createSeriesDto: CreateSerieDto) {
-    return 'This action adds a new series';
+  constructor(@InjectRepository(Serie) private seriesRepository: Repository<Serie>) {}
+
+  async create(createSerieDto: CreateSerieDto): Promise<Serie> {
+    const existe = await this.seriesRepository.findOneBy({
+      titulo: createSerieDto.titulo.trim(),
+    });
+
+    if (existe) {
+      throw new ConflictException('La serie ya existe');
+    }
+
+    return this.seriesRepository.save({
+      titulo: createSerieDto.titulo.trim(),
+      sinopsis: createSerieDto.sinopsis.trim(),
+      director: createSerieDto.director.trim(),
+      temporadas: createSerieDto.temporadas,
+      fechaEstreno: createSerieDto.fechaEstreno,
+    });
   }
 
-  findAll() {
-    return `This action returns all series`;
+  async findAll(): Promise<Serie[]> {
+    return this.seriesRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} series`;
+  async findOne(id: number): Promise<Serie> {
+    const serie = await this.seriesRepository.findOneBy({ id });
+    if (!serie) {
+      throw new NotFoundException(`La serie ${id} no existe`);
+    }
+    return serie;
   }
 
-  update(id: number, updateSeriesDto: UpdateSerieDto) {
-    return `This action updates a #${id} series`;
+  async update(id: number, updateSerieDto: UpdateSerieDto): Promise<Serie> {
+    const serie = await this.findOne(id);
+    const serieUpdate = Object.assign(serie, updateSerieDto);
+    return this.seriesRepository.save(serieUpdate);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} series`;
+  async remove(id: number) {
+    const serie = await this.findOne(id);
+    return this.seriesRepository.delete(serie.id);
   }
 }
