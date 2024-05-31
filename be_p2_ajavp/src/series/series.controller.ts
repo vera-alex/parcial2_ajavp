@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SeriesService } from './series.service';
 import { CreateSeriesDto } from './dto/create-series.dto';
 import { UpdateSeriesDto } from './dto/update-series.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('series')
 @Controller('series')
 export class SeriesController {
   constructor(private readonly seriesService: SeriesService) {}
