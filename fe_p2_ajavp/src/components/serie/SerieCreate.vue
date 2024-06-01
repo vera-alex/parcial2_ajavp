@@ -83,7 +83,7 @@ function goBack() {
           />
           <label for="temporadas">Temporadas</label>
         </div>
-        <div class="form-floating mb-3">
+        <div class="form-floating">
           <input
             type="text"
             class="form-control"
