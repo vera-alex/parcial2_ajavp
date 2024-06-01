@@ -57,6 +57,7 @@ onMounted(() => {
             <th scope="col">Director</th>
             <th scope="col">Temporadas</th>
             <th scope="col">Fecha de Estreno</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
