@@ -20,8 +20,8 @@ async function crearSerie() {
       titulo: titulo.value,
       sinopsis: sinopsis.value,
       director: director.value,
-      temporadas: temporadas.value,
-      fechaEstreno: fechaEstreno.value
+      temporadas: parseInt(temporadas.value),
+      fechaEstreno: fechaEstreno.value ? new Date(fechaEstreno.value) : null
     })
     .then(() => router.push('/series'))
 }
