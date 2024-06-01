@@ -10,6 +10,19 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/series',
+      name: 'series',
+      component: () => import('../views/SerieView.vue'),
+      children: [
+        { path: '', component: () => import('../components/serie/SerieList.vue') },
+        { path: 'crear', component: () => import('../components/serie/SerieCreate.vue') },
+        {
+          path: 'editar/:id',
+          component: () => import('../components/serie/SerieEdit.vue')
+        }
+      ]
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
