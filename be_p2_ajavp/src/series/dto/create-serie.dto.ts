@@ -32,4 +32,9 @@ export class CreateSerieDto {
   @IsNotEmpty({ message: 'El campo fechaEstreno no debe ser vacío' })
   @IsDateString({}, { message: 'El campo fechaEstreno debe ser de tipo fecha' })
   readonly fechaEstreno: Date;
+
+  @ApiProperty()
+  @IsNotEmpty({ message: 'El campo cantidadActores no debe ser vacío' })
+  @IsNumber({}, { message: 'El campo cantidadActores debe ser de tipo numérico' })
+  readonly cantidadActores: number;
 }

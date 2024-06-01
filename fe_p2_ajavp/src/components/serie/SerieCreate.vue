@@ -13,6 +13,7 @@ const sinopsis = ref('')
 const director = ref('')
 const temporadas = ref('')
 const fechaEstreno = ref('')
+const cantidadActores = ref('')
 
 async function crearSerie() {
   await http
@@ -21,7 +22,8 @@ async function crearSerie() {
       sinopsis: sinopsis.value,
       director: director.value,
       temporadas: parseInt(temporadas.value),
-      fechaEstreno: fechaEstreno.value ? new Date(fechaEstreno.value) : null
+      fechaEstreno: fechaEstreno.value ? new Date(fechaEstreno.value) : null,
+      cantidadActores: parseInt(cantidadActores.value)
     })
     .then(() => router.push('/series'))
 }
@@ -83,15 +85,25 @@ function goBack() {
           />
           <label for="temporadas">Temporadas</label>
         </div>
-        <div class="form-floating">
+        <div class="form-floating mb-3">
           <input
-            type="text"
+            type="date"
             class="form-control"
             v-model="fechaEstreno"
             placeholder="Fecha Estreno"
             required
           />
           <label for="fechaEstreno">Fecha Estreno</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            v-model="cantidadActores"
+            placeholder="Cantidad Actores"
+            required
+          />
+          <label for="cantidadActores">Cantidad Actores</label>
         </div>
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-lg">Crear</button>

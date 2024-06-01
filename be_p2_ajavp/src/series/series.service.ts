@@ -24,6 +24,7 @@ export class SeriesService {
       director: createSerieDto.director.trim(),
       temporadas: createSerieDto.temporadas,
       fechaEstreno: createSerieDto.fechaEstreno,
+      cantidadActores: createSerieDto.cantidadActores,
     });
   }
 

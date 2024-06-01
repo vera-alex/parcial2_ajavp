@@ -57,6 +57,7 @@ onMounted(() => {
             <th scope="col">Director</th>
             <th scope="col">Temporadas</th>
             <th scope="col">Fecha de Estreno</th>
+            <th scope="col">Cantidad de Actores</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -68,6 +69,7 @@ onMounted(() => {
             <td>{{ serie.director }}</td>
             <td>{{ serie.temporadas }}</td>
             <td>{{ serie.fechaEstreno }}</td>
+            <td>{{ serie.cantidadActores }}</td>
             <td>
               <button class="btn btn-link" @click="toEdit(serie.id)">Editar</button>
               <button class="btn btn-link" @click="toDelete(serie.id)">Eliminar</button>

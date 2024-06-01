@@ -19,4 +19,7 @@ export class Serie {
 
   @CreateDateColumn({ name: 'fecha_estreno', nullable: false })
   fechaEstreno: Date;
+
+  @Column('int', { name: 'cantidad_actores', nullable: false })
+  cantidadActores: number;
 }
