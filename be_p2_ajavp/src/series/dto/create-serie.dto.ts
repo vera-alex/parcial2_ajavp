@@ -24,8 +24,8 @@ export class CreateSerieDto {
   readonly director: string;
 
   @ApiProperty()
-  @IsNotEmpty({ message: 'El campo sinopsis no debe ser vacío' })
-  @IsNumber({}, { message: 'El campo sinopsis debe ser de tipo numérico' })
+  @IsNotEmpty({ message: 'El campo temporadas no debe ser vacío' })
+  @IsNumber({}, { message: 'El campo temporadas debe ser de tipo numérico' })
   readonly temporadas: number;
 
   @ApiProperty({ example: '2024-04-13' })
